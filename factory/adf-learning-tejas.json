@@ -1,0 +1,15 @@
+{
+	"name": "adf-learning-tejas",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Enabled",
+			"editable": true
+		}
+	},
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "de073f2f-180f-4aef-9481-e895b9e17fd1",
+		"tenantId": "9cc04d4d-9fdc-41cd-93ae-84e99c849bb6"
+	}
+}
