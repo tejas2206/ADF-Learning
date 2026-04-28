@@ -19,6 +19,10 @@
 			"type": "string",
 			"defaultValue": "https://storagedatafactorytej.dfs.core.windows.net/"
 		},
+		"managerTrigger_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/195b5c6b-e466-481b-801d-06ecc75d7312/resourceGroups/RG-ADFLearning/providers/Microsoft.Storage/storageAccounts/storagedatafactorytej"
+		},
 		"containerUri": {
 			"type": "string",
 			"metadata": "URI to storage account containing linked ARM templates"
@@ -58,6 +62,29 @@
 				}
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "adf-learning-tejas_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"managerTrigger_properties_typeProperties_scope": {
+						"value": "[parameters('managerTrigger_properties_typeProperties_scope')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'adf-learning-tejas_ArmTemplate_0')]"
+			]
 		}
 	]
 }

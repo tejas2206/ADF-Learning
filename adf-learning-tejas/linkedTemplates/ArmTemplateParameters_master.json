@@ -14,6 +14,9 @@
 		"linkedserviceDL_properties_typeProperties_url": {
 			"value": "https://storagedatafactorytej.dfs.core.windows.net/"
 		},
+		"managerTrigger_properties_typeProperties_scope": {
+			"value": "/subscriptions/195b5c6b-e466-481b-801d-06ecc75d7312/resourceGroups/RG-ADFLearning/providers/Microsoft.Storage/storageAccounts/storagedatafactorytej"
+		},
 		"containerUri": {
 			"value": ""
 		},
