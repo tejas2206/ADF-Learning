@@ -349,7 +349,7 @@
 				],
 				"type": "BlobEventsTrigger",
 				"typeProperties": {
-					"blobPathBeginsWith": "/source/blobs/csvfiles/Fact_Sales_1 (1).csv",
+					"blobPathBeginsWith": "/source/blobs/csvfiles/Fact_Sales_2.csv",
 					"ignoreEmptyBlobs": true,
 					"scope": "[parameters('ManTrigger_properties_typeProperties_scope')]",
 					"events": [
