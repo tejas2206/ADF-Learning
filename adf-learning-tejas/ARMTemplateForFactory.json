@@ -19,7 +19,7 @@
 			"type": "string",
 			"defaultValue": "https://storagedatafactorytej.dfs.core.windows.net/"
 		},
-		"managerTrigger_properties_typeProperties_scope": {
+		"ManTrigger_properties_typeProperties_scope": {
 			"type": "string",
 			"defaultValue": "/subscriptions/195b5c6b-e466-481b-801d-06ecc75d7312/resourceGroups/RG-ADFLearning/providers/Microsoft.Storage/storageAccounts/storagedatafactorytej"
 		}
@@ -1333,36 +1333,6 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/managerTrigger')]",
-			"type": "Microsoft.DataFactory/factories/triggers",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"runtimeState": "Stopped",
-				"pipelines": [
-					{
-						"pipelineReference": {
-							"referenceName": "pipelineManager",
-							"type": "PipelineReference"
-						},
-						"parameters": {}
-					}
-				],
-				"type": "BlobEventsTrigger",
-				"typeProperties": {
-					"blobPathBeginsWith": "/source/blobs/csvfiles/Fact_Sales_1 (1).csv",
-					"ignoreEmptyBlobs": true,
-					"scope": "[parameters('managerTrigger_properties_typeProperties_scope')]",
-					"events": [
-						"Microsoft.Storage.BlobCreated"
-					]
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/pipelineManager')]"
-			]
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/dataflow')]",
 			"type": "Microsoft.DataFactory/factories/dataflows",
 			"apiVersion": "2018-06-01",
@@ -1456,6 +1426,36 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/dataflow_source')]",
 				"[concat(variables('factoryId'), '/datasets/dataflow_sink')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ManTrigger')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "pipelineManager",
+							"type": "PipelineReference"
+						},
+						"parameters": {}
+					}
+				],
+				"type": "BlobEventsTrigger",
+				"typeProperties": {
+					"blobPathBeginsWith": "/source/blobs/csvfiles/Fact_Sales_1 (1).csv",
+					"ignoreEmptyBlobs": true,
+					"scope": "[parameters('ManTrigger_properties_typeProperties_scope')]",
+					"events": [
+						"Microsoft.Storage.BlobCreated"
+					]
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/pipelineManager')]"
 			]
 		}
 	]
