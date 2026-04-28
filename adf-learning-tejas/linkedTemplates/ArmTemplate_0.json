@@ -311,6 +311,7 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobFSLocation",
+						"fileName": "Fact_Sales_1 (1).csv",
 						"folderPath": "csvfiles",
 						"fileSystem": "source"
 					},
