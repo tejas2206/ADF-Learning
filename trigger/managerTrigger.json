@@ -1,0 +1,24 @@
+{
+	"name": "managerTrigger",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "pipelineManager",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/source/blobs/csvfiles/Fact_Sales_1 (1).csv",
+			"ignoreEmptyBlobs": true,
+			"scope": "/subscriptions/195b5c6b-e466-481b-801d-06ecc75d7312/resourceGroups/RG-ADFLearning/providers/Microsoft.Storage/storageAccounts/storagedatafactorytej",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}
