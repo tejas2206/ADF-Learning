@@ -9,6 +9,7 @@
 				"policy": {
 					"secureInput": false
 				},
+				"userProperties": [],
 				"typeProperties": {
 					"pipeline": {
 						"referenceName": "pipelineCopyGit",
@@ -16,8 +17,39 @@
 					},
 					"waitOnCompletion": true
 				}
+			},
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "Ind",
+					"value": "Y"
+				}
+			},
+			{
+				"name": "If Condition1",
+				"type": "IfCondition",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@equals(variables('Ind'), 'Y')",
+						"type": "Expression"
+					}
+				}
 			}
 		],
+		"variables": {
+			"Ind": {
+				"type": "String"
+			}
+		},
 		"annotations": []
 	}
 }
